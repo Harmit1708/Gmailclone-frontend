@@ -7,15 +7,14 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { NavDropdown } from "react-bootstrap";
+import Header from "../Components/Header";
+import Sidebar from "../Components/Sidebar";
+
 
 function EmailSent() {
 
   let context = React.useContext(gmailContext)
   let navigate = useNavigate();
-  let jump = () => {
-    navigate("/innermsg");
-  };
-
   let [data, setData] = useState([]);
 
   let getData = async () => {
@@ -50,8 +49,10 @@ function EmailSent() {
     }
   }
   
-  return (
-    <div className="mt-2" style={{ marginLeft: "270px" }}>
+  return <>   
+    <Header />
+      <Sidebar />
+   <div className="mt-2" style={{ marginLeft: "270px" }}>
     <div className="d-flex">
     <input
           type="checkbox"
@@ -104,7 +105,6 @@ function EmailSent() {
                   <button
                     className="btn shadow-none"
                     onClick={()=> {
-                      let find = data.findIndex(c => c._id === e._id);
                       context.favorite.push(e);
                     }}  
                     
@@ -116,7 +116,6 @@ function EmailSent() {
                     className="pt-2 pl-4"
                     style={{ fontWeight: "bold" }}
                     onClick={() => {
-                      let find = data.findIndex((c) => c.to === e.to);
                       context.sentMsg = e;
                       navigate("/innermsg");
                     }}
@@ -126,7 +125,6 @@ function EmailSent() {
                 </div>
 
                 <div className="middle_part" onClick={() => {
-                  let find = data.findIndex((c) => c.to === e.to);
                       context.sentMsg = e;
                       navigate("/innermsg");
                 }}>
@@ -150,7 +148,8 @@ function EmailSent() {
         );
       })}
     </div>
-  );
+    </>
+
 }
 
 export default EmailSent;

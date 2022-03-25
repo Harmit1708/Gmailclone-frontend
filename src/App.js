@@ -2,14 +2,17 @@ import React from 'react'
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// Header
-import Header from "../src/Components/Header";
-import Sidebar from "../src/Components/Sidebar";
+
 import Home from "../src/Components/Home";
 import Emailmsg from "./Components/EmailListInnerMsg";
 import Emailsent from "../src/Components/EmailSent";
 import EmailSentMsg from '../src/Components/EmailSentMsg'
 import StarredEmail from '../src/Components/StarredEmail'
+import Login from '../src/Components/Login'
+import Signup from '../src/Components/Signup'
+
+
+
 export const gmailContext = React.createContext();
 
 function App() {
@@ -23,10 +26,11 @@ function App() {
     <>
       <BrowserRouter>
         <gmailContext.Provider value={{favorite,setFavorite,innerMsg,setInnerMsg,sentMsg,setSendMsg}}>
-        <Header />
-        <Sidebar />
         <Routes>
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/mail" element={<Emailmsg />} />
           <Route path="/send" element={<Emailsent />} />
           <Route path="/innermsg" element={<EmailSentMsg/>}/>

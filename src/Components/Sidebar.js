@@ -57,7 +57,7 @@ function Sidebar(props) {
               borderBottomRightRadius: "50px",
             }}
           >
-            <Link to="/" className="mt-3">
+            <Link to="/home" className="mt-3">
               <InboxIcon /> &nbsp;&nbsp;Inbox
             </Link>
           </div>

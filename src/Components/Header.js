@@ -2,8 +2,21 @@ import React from "react";
 import { Navbar, NavDropdown, Nav, Form, FormControl } from "react-bootstrap";
 import Gmail_logo from "../Assets/Gmail_logo.png";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-
+import {useNavigate} from 'react-router-dom'
+import LogoutIcon from '@mui/icons-material/Logout';
 function Header() {
+
+  let name = sessionStorage.getItem('firstName')
+
+
+  let navigate = useNavigate();
+  let token = sessionStorage.getItem("token");
+
+  let logout = () => {
+    sessionStorage.clear();
+    navigate("/");
+  };
+
   return (
     <>
       <Navbar bg="white" expand="lg" style={{minwidth:"1200px"}}>
@@ -24,7 +37,7 @@ function Header() {
             </svg>
           </span>
         </div>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href="/home">
           <img style={{ paddingRight: "60px"}} src={Gmail_logo} alt="Gmail" />
         </Navbar.Brand>
         <Form className="d-flex">
@@ -52,9 +65,9 @@ function Header() {
           >
             <NavDropdown
               align="end"
-              title={<HelpOutlineIcon />}
+              title={<HelpOutlineIcon style={{height:"32px",width:"32px"}}/>}
               id="navbarScrollingDropdown"
-              className="dropdown dropdown-toogle"
+              className="dropdown dropdown-toogle mt-2"
             >
               <NavDropdown.Item href="#action3">Help</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Training</NavDropdown.Item>
@@ -68,10 +81,10 @@ function Header() {
             <Nav.Link href="#action2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="28"
+                height="28"
                 fill="currentColor"
-                className="bi bi-gear"
+                className="bi bi-gear mt-2"
                 viewBox="0 0 16 16"
               >
                 <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
@@ -81,22 +94,28 @@ function Header() {
             <Nav.Link href="#" disabled>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="28"
+                height="28"
                 fill="currentColor"
-                className="bi bi-grid-3x3-gap"
+                className="bi bi-grid-3x3-gap mt-2"
                 viewBox="0 0 16 16"
               >
                 <path d="M4 2v2H2V2h2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zM9 2v2H7V2h2zm5 0v2h-2V2h2zM4 7v2H2V7h2zm5 0v2H7V7h2zm5 0h-2v2h2V7zM4 12v2H2v-2h2zm5 0v2H7v-2h2zm5 0v2h-2v-2h2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2z" />
               </svg>
             </Nav.Link>
-            <Nav.Link href="#" disabled>
-              <img
-                className=" round"
-                style={{ height: "32px", width: "32px" }}
-                src="https://cdn-icons.flaticon.com/png/512/3665/premium/3665946.png?token=exp=1647681965~hmac=fc293fdc4d1dba61eca83af9885c86c7"
-                alt="Userimage"
-              ></img>
+            <Nav.Link>
+              <h4 className="pt-2">{name}</h4>
+            </Nav.Link>
+            <Nav.Link>
+            {token ? <Nav.Link
+                      className="set_border mr-1"
+                      style={{ color: "#000000" }}
+                      onClick={() => {
+                        logout();
+                      }}
+                    >
+                      <LogoutIcon/> 
+                    </Nav.Link>:""}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

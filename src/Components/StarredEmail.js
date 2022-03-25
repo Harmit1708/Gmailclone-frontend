@@ -2,7 +2,8 @@ import React from 'react'
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { useNavigate } from "react-router-dom";
 import {gmailContext} from '../App'
-
+import Header from "../Components/Header";
+import Sidebar from "../Components/Sidebar";
 function StarredEmail() {
 
   let context = React.useContext(gmailContext)
@@ -19,7 +20,10 @@ function StarredEmail() {
   }
 
   
-  return <div className="mt-2" style={{ marginLeft: "270px" }}>
+  return<> 
+  <Header />
+      <Sidebar />
+  <div className="mt-2" style={{ marginLeft: "270px" }}>
     <div>
       {context?.favorite?.map((e,i)=>{
         return <div key={i}>
@@ -67,6 +71,7 @@ function StarredEmail() {
       })}
     </div>
   </div>
+  </>
 }
 
 export default StarredEmail
