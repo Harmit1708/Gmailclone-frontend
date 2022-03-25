@@ -44,7 +44,7 @@ function Login() {
           <div
             className="login"
             style={{
-              height: "700px",
+              height: "600px",
               width: "550px",
               backgroundColor: "#ffffff",
               border:"2px solid #dbdde1",
