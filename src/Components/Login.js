@@ -35,8 +35,6 @@ function Login() {
     },
   });
 
-
-
   return (
     <div className="login">
       <div className="login-content" style={{marginTop:"150px"}}>

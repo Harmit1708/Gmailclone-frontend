@@ -4,8 +4,8 @@ import Header from "../Components/Header";
 import Sidebar from "../Components/Sidebar";
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-function Home() {
 
+function Home() {
 
   let navigate = useNavigate();
   useEffect(()=>{

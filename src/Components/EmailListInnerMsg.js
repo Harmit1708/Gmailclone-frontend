@@ -9,7 +9,6 @@ function EmailMsg() {
   let navigate = useNavigate();
 
   let context = React.useContext(gmailContext);
-  console.log(context.innerMsg);
 
   let jump = () => {
     navigate("/home");
@@ -17,8 +16,8 @@ function EmailMsg() {
 
   return <>
       <Header />
-    <div className="mt-2" style={{ marginLeft: "270px" }}>
       <Sidebar />
+    <div className="mt-2" style={{ marginLeft: "270px" }}>
       <ArrowBackIcon
         onClick={() => jump()}
         style={{ color: "grey", cursor: "pointer" }}
@@ -26,12 +25,12 @@ function EmailMsg() {
       <hr></hr>
       <div>
         <h3 className="mt-3 ml-3">Dear {context?.innerMsg?.to}</h3>
-        <h5 className="mt-3 ml-3">{context.innerMsg.subject}</h5>
+        <h5 className="mt-3 ml-3">{context?.innerMsg?.subject}</h5>
         <p
           className="d-flex flex-row justify-content-center"
           style={{ height: "500px", alignItem: "center", fontSize: "25px" }}
         >
-          {context.innerMsg.message}
+          {context?.innerMsg?.message}
         </p>
       </div>
     </div>
