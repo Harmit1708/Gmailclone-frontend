@@ -11,8 +11,6 @@ import StarredEmail from '../src/Components/StarredEmail'
 import Login from '../src/Components/Login'
 import Signup from '../src/Components/Signup'
 
-
-
 export const gmailContext = React.createContext();
 
 function App() {
